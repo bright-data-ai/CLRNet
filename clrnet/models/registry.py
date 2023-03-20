@@ -22,8 +22,9 @@ def build_backbones(cfg):
     return build(cfg.backbone, BACKBONES, default_args=dict(cfg=cfg))
 
 
-def build_necks(cfg):
-    return build(cfg.necks, NECKS, default_args=dict(cfg=cfg))
+# def build_necks(cfg):
+#     # no necks in config
+#     return build(cfg.necks, NECKS, default_args=dict(cfg=cfg))
 
 
 def build_aggregator(cfg):
