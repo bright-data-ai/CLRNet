@@ -13,6 +13,8 @@ LIST_FILE = {
     'train': 'list/train_gt.txt',
     'val': 'list/val.txt',
     'test': 'list/test.txt',
+    'train_min': 'list/train_min.txt',
+    'test_min': 'list/test_min.txt',
 }
 
 CATEGORYS = {
@@ -26,6 +28,19 @@ CATEGORYS = {
     'cross': 'list/test_split/test7_cross.txt',
     'night': 'list/test_split/test8_night.txt',
 }
+
+#
+# CATEGORYS = {
+#     'normal': 'list/test_split_min/test0_normal.txt',
+#     'crowd': 'list/test_split_min/test1_crowd.txt',
+#     'hlight': 'list/test_split_min/test2_hlight.txt',
+#     'shadow': 'list/test_split_min/test3_shadow.txt',
+#     'noline': 'list/test_split_min/test4_noline.txt',
+#     'arrow': 'list/test_split_min/test5_arrow.txt',
+#     'curve': 'list/test_split_min/test6_curve.txt',
+#     'cross': 'list/test_split_min/test7_cross.txt',
+#     'night': 'list/test_split_min/test8_night.txt',
+# }
 
 
 @DATASETS.register_module
@@ -53,7 +68,7 @@ class CULane(BaseDataset):
             for line in list_file:
                 infos = self.load_annotation(line.split())
                 self.data_infos.append(infos)
-        
+
         # cache data infos to file
         with open(cache_path, 'wb') as cache_file:
             pkl.dump(self.data_infos, cache_file)

@@ -407,7 +407,7 @@ class CLRHead(nn.Module):
                 cls_accuracy = accuracy(cls_pred, cls_target)
                 cls_acc_stage.append(cls_accuracy)
 
-            cls_acc.append(sum(cls_acc_stage) / len(cls_acc_stage))
+            cls_acc.append(sum(cls_acc_stage) / (len(cls_acc_stage) + 1e-3))
 
         # extra segmentation loss
         seg_loss = self.criterion(F.log_softmax(output['seg'], dim=1),
